@@ -1,0 +1,102 @@
+body {
+  background-color: rgb(15, 15, 15);
+  color: white;
+}
+.TopBar {
+  background-color: rgb(75, 75, 75);
+  position: fixed;
+  width: 100%;
+  height: 30px;
+  top: 0px;
+  left: 0px;
+}
+
+#JogosButton {
+  position: fixed;
+  top: 2.5px;
+  background-color: rgb(125, 125, 125);
+  border-color: black;
+  height: 25px;
+  left: 10px;
+}
+
+.Jogos {
+  position: fixed;
+  background-color: rgb(0, 0, 0, 0.35);
+  border-color: white;
+  width: 100%;
+  height: 500px;
+  left: 0px;
+  top: 35px;
+}
+
+#Money {
+  position: fixed;
+  color: greenyellow;
+  right: 10px;
+  top: -10px;
+}
+
+#Rise {
+  position: fixed;
+  background-color: black;
+  border-color: white;
+  color: white;
+  height: 50px;
+  width: 50px;
+}
+
+#Rise p {
+  visibility: hidden;
+  position: fixed;
+  left: 60px;
+  top: 40px;
+}
+
+#Rise img {
+  background: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.RiseDiv {
+  visibility: hidden;
+  position: fixed;
+  background-color: rgb(25, 25, 25);
+  color: lightgray;
+  border: 2px solid gray;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: 350px;
+  transform: translate(-50%, -50%);
+  
+}
+
+#h1Rise {
+  position: absolute;
+  text-align: center;
+  margin-top: 150px;
+  inset: 0;
+}
+
+#RiseMoneyInput {
+  position: absolute;
+  background-color: gray;
+  color: greenyellow;
+  bottom: 5px;
+  left: 5px;
+}
+
+#RiseMoneyButton {
+  position: absolute;
+  background-color: gray;
+  bottom: 5px;
+  left: 180px;
+}
+
+#RiseMoneyInput::placeholder {
+  color: black;
+}

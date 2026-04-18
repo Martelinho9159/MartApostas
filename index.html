@@ -1,17 +1,76 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="pt-br">
+    <head>
+        <title>MartlinoApostas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=2.0" />
+        <link rel="stylesheet" href="style.CSS">
+    </head>
+  <body>
 
-<head>
+    <div class = "TopBar">
+      <button id="JogosButton" onclick="Switch()">Jogos</button>
+      <p id="Money"></p>
+    </div>
 
-<title>Teste</title>
+    <div id = "Jogos" class = "Jogos">
+      <button id ="Rise" onclick="OnRise()" onmouseenter="RiseHover()" onmouseleave="RiseHoverLeave()">
+        <img>
+        <p id="RiseP">Clique para abrir.</p>
+        </button>
+    </div>
 
-</head>
+    <div id = "RiseDiv" class = "RiseDiv">
 
-<body>
+      <h1 id="h1Rise">1.00x</h1>
 
-<h1>Teste primeiro site emaga</h1>
+      <input type="number" placeholder="Insira dinheiro da aposta." id="RiseMoneyInput">
+      <button onclick="StartAposta()" id="RiseMoneyButton">Confirmar</button>
+    </div>
 
-</body>
+    <script>
+let JogosButton = document.getElementById("JogosButton")
+let Games = document.getElementById("Jogos")
+let RiseButton = document.getElementById("Rise")
+let RiseDisc = document.getElementById("RiseP")
+let RiseDiv = document.getElementById("RiseDiv")
+let paramoney = document.getElementById("Money")
+let money = Number(localStorage.getItem("money")) || 100
+
+paramoney.textContent = "R$ " + String(money) + ".00"
+
+Games.style.visibility = "hidden";
+      function Switch() {
+  if (Games.style.visibility === "hidden") {
+    Games.style.visibility = "visible";
+  } else {
+    Games.style.visibility = "hidden";
+  }
+  RiseDiv.style.visibility = "hidden";
+  if (RiseDisc.style.visibility == "visible") {
+    RiseDisc.style.visibility = "hidden";
+  }
+}
+
+function OnRise() {
+
+  Games.style.visibility = "hidden";
+  RiseDiv.style.visibility = "visible";
+
+
+
+}
+
+function RiseHover() {
+  RiseDisc.style.visibility = "visible";
+}
+function RiseHoverLeave() {
+  RiseDisc.style.visibility = "hidden";
+}
+
+    </script>
+
+  </body>
 
 </html>
