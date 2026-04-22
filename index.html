@@ -4,7 +4,7 @@
     <head>
         <title>MartlinoApostas</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=2.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style.CSS">
     </head>
   <body>
@@ -28,49 +28,7 @@
       <input type="number" placeholder="Insira dinheiro da aposta." id="RiseMoneyInput">
       <button onclick="StartAposta()" id="RiseMoneyButton">Confirmar</button>
     </div>
-
-    <script>
-let JogosButton = document.getElementById("JogosButton")
-let Games = document.getElementById("Jogos")
-let RiseButton = document.getElementById("Rise")
-let RiseDisc = document.getElementById("RiseP")
-let RiseDiv = document.getElementById("RiseDiv")
-let paramoney = document.getElementById("Money")
-let money = Number(localStorage.getItem("money")) || 100
-
-paramoney.textContent = "R$ " + String(money) + ".00"
-
-Games.style.visibility = "hidden";
-      function Switch() {
-  if (Games.style.visibility === "hidden") {
-    Games.style.visibility = "visible";
-  } else {
-    Games.style.visibility = "hidden";
-  }
-  RiseDiv.style.visibility = "hidden";
-  if (RiseDisc.style.visibility == "visible") {
-    RiseDisc.style.visibility = "hidden";
-  }
-}
-
-function OnRise() {
-
-  Games.style.visibility = "hidden";
-  RiseDiv.style.visibility = "visible";
-
-
-
-}
-
-function RiseHover() {
-  RiseDisc.style.visibility = "visible";
-}
-function RiseHoverLeave() {
-  RiseDisc.style.visibility = "hidden";
-}
-
-    </script>
-
+      <script src="script.js"></script>
   </body>
 
 </html>
