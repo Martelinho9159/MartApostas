@@ -10,20 +10,13 @@ let inputRise = document.getElementById("RiseMoneyInput")
 let inputButton = document.getElementById("RiseMoneyButton")
 let inround = false
 let alreadyaposta = false
+let end = false
 const interval = 5
 const task = {}
 const originalcolor = h1Rise.style.color
 
 task.wait = function(seconds) {
   return new Promise(resolve => setTimeout(resolve, seconds * 1000))
-}
-
-async function StartNextRound() {
-while (await task.wait(interval)) {
-
-
-
-}
 }
 
 function random(MaxParam) {
@@ -33,7 +26,11 @@ function random(MaxParam) {
   return resultado
 }
 
-paramoney.textContent = "R$ " + String(money) + ".00"
+function setparamoney() {
+  paramoney.textContent = "R$ " + money.toFixed(2)
+}
+
+setparamoney()
 
 Games.style.visibility = "hidden";
       function Switch() {
@@ -72,42 +69,64 @@ function GetMoneyOnInput() {
   return Number(inputRise.value)
 }
 
-StartNextRound()
-
-async function StartGame() {
+async function StartGame(dinheiroapostado) {
   if (!inround) {
     inround = true
-  if (h1Rise.style.color === "red") {
+    money -= dinheiroapostado
+    setparamoney()
+    SaveMoney()
+  if (h1Rise.style.color === "red" || h1Rise.style.color === "green") {
     h1Rise.style.color = originalcolor
   }
 
   for (let i = 0; i < 99999999; i++) {
+    
     let apostado = GetMoneyOnInput()
     let mont = Math.floor((1 + i / 100) * 100) / 100
     h1Rise.innerText = mont + "x" + " " +   "(+" + Math.floor((apostado * mont) * 100) / 100 + "R$)"
     let stop = random(75)
+    inputButton.innerText = "Parar"
+    if (end) {
+      end = false
+      h1Rise.innerText = `+${(apostado * mont).toFixed(2)}R$`
+      h1Rise.style.color = "green"
+      inputButton.innerText = "Confirmar"
+      money += (apostado * mont)
+      SaveMoney()
+      setparamoney()
+      inround = false
+      break
+    }
     if (stop === 1) {
       h1Rise.innerText = "Crashed"
       h1Rise.style.color = "red"
+      inputButton.innerText = "Confirmar"
       inround = false
       break
     }
 
-    await task.wait(0.2)
+    await task.wait(0.15)
 
   }
-} else {
-  alert("Espere até que o próximo round aconteça!")
 }
+}
+
+function EndGame() {
+end = true
 }
 
 async function StartAposta() {
   let apostavalue = GetMoneyOnInput()
   let minaposta = 0.50
-
+  if (inround) {
+    EndGame()
+  }
   if (apostavalue >= minaposta) {
-    await StartGame()
+    if (money >= apostavalue) {
+      await StartGame(apostavalue)
+    }
   } else {
     alert("Insira um valor válido!")
   }
+  
 }
